@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Popover from "./components/coomon/Popover";
 import Footer from "./components/Footer";
 import Header from "./components/header";
