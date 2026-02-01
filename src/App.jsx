@@ -52,21 +52,23 @@ function App() {
 
   return (
     <>
-      <Header onUserClick={handleUserClick} isLogin={isLogin} />
+      <HashRouter>
+        <Header onUserClick={handleUserClick} isLogin={isLogin} />
 
-      {showPopover && <Popover onUserClick={handleUserClick} handleLogout={handleLogout} />}
-      {isLogin && <Profile />}
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/course" element={<Course />} />
-        <Route path="/trainer" element={<Trainer />} />
-        <Route path="register" element={<Signup />} />
-        <Route path="login" element={<Signin />} />
-        <Route path="/trainer-signup" element={<TrainerSignup />} />
-        <Route path="/trainer-profile" element={<TrainerProfile trainer={trainerData} />} />
-      </Routes>
-      <Footer />
+        {showPopover && <Popover onUserClick={handleUserClick} handleLogout={handleLogout} />}
+        {isLogin && <Profile />}
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/course" element={<Course />} />
+          <Route path="/trainer" element={<Trainer />} />
+          <Route path="register" element={<Signup />} />
+          <Route path="login" element={<Signin />} />
+          <Route path="/trainer-signup" element={<TrainerSignup />} />
+          <Route path="/trainer-profile" element={<TrainerProfile trainer={trainerData} />} />
+        </Routes>
+        <Footer />
+      </HashRouter>
     </>
   );
 }
