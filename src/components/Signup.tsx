@@ -1,9 +1,9 @@
-import LoginImage from './coomon/LoginImage';
-import Title from './coomon/Title';
-import Input from './coomon/Input';
-import Label from './coomon/Label';
-import Password from './coomon/Password';
-import Button from './coomon/Button';
+import LoginImage from './common/LoginImage';
+import Title from './common/Title';
+import Input from './common/Input';
+import Label from './common/Label';
+import Password from './common/Password';
+import Button from './common/Button';
 import axios from 'axios';
 import { useState, useEffect } from 'react'
 

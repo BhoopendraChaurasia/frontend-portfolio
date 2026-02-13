@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaChalkboardTeacher, FaGraduationCap, FaChartLine } from "react-icons/fa";
+import FAQ from '../components/common/FAQ';
 
 const Home = () => {
     return (
@@ -66,21 +67,21 @@ const Home = () => {
                         <div className="bg-gray-700 p-6 rounded-xl shadow-lg hover:scale-105 transition">
                             <h3 className="text-xl font-bold mb-2">Full Stack Development</h3>
                             <p className="text-gray-300 mb-4">6 Months | Beginner to Advanced</p>
-                            <Link className="inline-block px-4 py-2 bg-indigo-500 rounded-lg hover:bg-indigo-600 transition">
+                            <Link to=""className="inline-block px-4 py-2 bg-indigo-500 rounded-lg hover:bg-indigo-600 transition">
                                 Enroll Now
                             </Link>
                         </div>
                         <div className="bg-gray-700 p-6 rounded-xl shadow-lg hover:scale-105 transition">
                             <h3 className="text-xl font-bold mb-2">Data Science & AI</h3>
                             <p className="text-gray-300 mb-4">5 Months | Intermediate</p>
-                            <Link className="inline-block px-4 py-2 bg-purple-500 rounded-lg hover:bg-purple-600 transition">
+                            <Link to="" className="inline-block px-4 py-2 bg-purple-500 rounded-lg hover:bg-purple-600 transition">
                                 Enroll Now
                             </Link>
                         </div>
                         <div className="bg-gray-700 p-6 rounded-xl shadow-lg hover:scale-105 transition">
                             <h3 className="text-xl font-bold mb-2">UI / UX Design</h3>
                             <p className="text-gray-300 mb-4">3 Months | Beginner</p>
-                            <Link className="inline-block px-4 py-2 bg-pink-500 rounded-lg hover:bg-pink-600 transition">
+                            <Link to="" className="inline-block px-4 py-2 bg-pink-500 rounded-lg hover:bg-pink-600 transition">
                                 Enroll Now
                             </Link>
                         </div>
@@ -123,6 +124,8 @@ const Home = () => {
                     Get Started
                 </Link>
             </section>
+
+            <FAQ />
 
         </div>
     );

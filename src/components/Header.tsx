@@ -1,18 +1,22 @@
 import { useState } from 'react';
-import ProfileView from './coomon/ProfileView'
+import ProfileView from './common/ProfileView'
 import {NavLink } from "react-router";
-import RegisterLogin from './coomon/RegisterLogin';
+import RegisterLogin from './common/RegisterLogin';
 import { useLocation } from 'react-router-dom';
+import { IoMenu } from "react-icons/io5";
+import Sidebar from './Sidebar';
 
 
-const Header = ({ onUserClick, isLogin }) => {
-
+const Header = ({ handleSidebar, onUserClick, isLogin }) => {
+    const [openMenu, setOpenMenu] = useState(false);
     const { pathname } = useLocation();
-
+    const handleMenu = () => {
+        setOpenMenu(!openMenu);
+    }
     return (
         <>
             {/* <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> */}
-            <nav className="relative bg-gray-800">
+            <nav className="relative bg-gray-800 ">
                 <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                     <div className="relative flex h-16 items-center justify-between">
                         <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -28,6 +32,7 @@ const Header = ({ onUserClick, isLogin }) => {
                             </button>
                         </div>
                         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                            <div onClick={handleSidebar} className="flex shrink-0 items-center text-white text-2xl gap-4"><IoMenu className="gap-5 " /></div>
                             <div className="flex shrink-0 items-center">
                                 <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" className="h-8 w-auto" />
                             </div>
@@ -53,7 +58,7 @@ const Header = ({ onUserClick, isLogin }) => {
                         </div>
                     </div>
                 </div >
-
+                
                 <el-disclosure id="mobile-menu" hidden className="block sm:hidden">
                     <div className="space-y-1 px-2 pt-2 pb-3">
                         <NavLink to={"/"} aria-current="page" className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">Home</NavLink>
@@ -62,8 +67,8 @@ const Header = ({ onUserClick, isLogin }) => {
                         <NavLink to={"/Trainer"} className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Trainer</NavLink>
                     </div>
                 </el-disclosure>
-            </nav >
-
+            </nav>
+            
         </>
     );
 }

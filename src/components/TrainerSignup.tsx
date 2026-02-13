@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { FaUserAlt, FaEnvelope, FaLock, FaChalkboardTeacher, FaCalendarAlt } from "react-icons/fa";
-import Label from "./coomon/Label";
-import Password from "./coomon/Password";
-import Button from "./coomon/Button";
-import Title from "./coomon/Title";
-import LoginImage from "./coomon/LoginImage";
+import Label from "./common/Label";
+import Password from "./common/Password";
+import Button from "./common/Button";
+import Title from "./common/Title";
+import LoginImage from "./common/LoginImage";
 import axios from "axios";
 
 export default function TrainerSignup() {

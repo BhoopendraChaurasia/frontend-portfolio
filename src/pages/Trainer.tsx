@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import TrainerProfileButton from '../components/coomon/TrainerProfilebutton';
+import TrainerProfileButton from '../components/common/TrainerProfilebutton';
 
 function Trainer() {
     const trainers = [
