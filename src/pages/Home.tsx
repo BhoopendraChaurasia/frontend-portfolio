@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaChalkboardTeacher, FaGraduationCap, FaChartLine } from "react-icons/fa";
-import FAQ from '../components/common/FAQ';
+import FAQ from '@/components/common/FAQ';
 
 const Home = () => {
     return (
@@ -98,19 +98,19 @@ const Home = () => {
                             <div className="w-24 h-24 bg-indigo-500 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold">J</div>
                             <h3 className="text-xl font-bold mb-1">John Doe</h3>
                             <p className="text-gray-300 mb-2">Full Stack Development</p>
-                            <Link className="text-indigo-500 hover:underline">View Profile</Link>
+                            <Link to="" className="text-indigo-500 hover:underline">View Profile</Link>
                         </div>
                         <div className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition text-center p-6">
                             <div className="w-24 h-24 bg-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold">J</div>
                             <h3 className="text-xl font-bold mb-1">Jane Smith</h3>
                             <p className="text-gray-300 mb-2">Data Science & AI</p>
-                            <Link className="text-purple-500 hover:underline">View Profile</Link>
+                            <Link to="" className="text-purple-500 hover:underline">View Profile</Link>
                         </div>
                         <div className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition text-center p-6">
                             <div className="w-24 h-24 bg-pink-500 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold">A</div>
                             <h3 className="text-xl font-bold mb-1">Alex Brown</h3>
                             <p className="text-gray-300 mb-2">UI / UX Design</p>
-                            <Link className="text-pink-500 hover:underline">View Profile</Link>
+                            <Link to="" className="text-pink-500 hover:underline">View Profile</Link>
                         </div>
                     </div>
                 </div>

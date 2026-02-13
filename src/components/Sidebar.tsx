@@ -2,7 +2,7 @@ import { FaRegArrowAltCircleLeft, FaUserTie } from "react-icons/fa";
 import { TiUserAddOutline } from "react-icons/ti";
 import { HiHome } from "react-icons/hi2";
 
-export default function Sidebar({ handleSidebar, toggleSidebar }) {
+export default function Sidebar({ handleSidebar }) {
     return (
         <aside
             className={`fixed top-0 left-0 z-50 h-screen w-64 bg-gray-100 text-dark

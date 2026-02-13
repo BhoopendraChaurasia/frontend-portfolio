@@ -3,16 +3,20 @@ import ProfileView from './common/ProfileView'
 import {NavLink } from "react-router";
 import RegisterLogin from './common/RegisterLogin';
 import { useLocation } from 'react-router-dom';
-import { IoMenu } from "react-icons/io5";
+import { IoMenuOutline } from "react-icons/io5";
+// import DoLearnIcon from "../assets/icons/DoLearn.svg"
+import DoLearnLogo from "../assets/icons/DoLearnLogo";
+
+
 import Sidebar from './Sidebar';
 
 
 const Header = ({ handleSidebar, onUserClick, isLogin }) => {
     const [openMenu, setOpenMenu] = useState(false);
     const { pathname } = useLocation();
-    const handleMenu = () => {
-        setOpenMenu(!openMenu);
-    }
+    // const handleMenu = () => {
+    //     setOpenMenu(!openMenu);
+    // }
     return (
         <>
             {/* <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> */}
@@ -20,7 +24,7 @@ const Header = ({ handleSidebar, onUserClick, isLogin }) => {
                 <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                     <div className="relative flex h-16 items-center justify-between">
                         <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                            <button type="button" command="--toggle" commandfor="mobile-menu" className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
+                            <button type="button" onClick={handleSidebar} className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
                                 <span className="absolute -inset-0.5"></span>
                                 <span className="sr-only">Open main menu</span>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" data-slot="icon" aria-hidden="true" className="size-6 in-aria-expanded:hidden">
@@ -32,9 +36,9 @@ const Header = ({ handleSidebar, onUserClick, isLogin }) => {
                             </button>
                         </div>
                         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                            <div onClick={handleSidebar} className="flex shrink-0 items-center text-white text-2xl gap-4"><IoMenu className="gap-5 " /></div>
+                            <div onClick={handleSidebar} className="flex shrink-0 items-center text-white text-2xl gap-4 text-red-100 relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500"><IoMenuOutline className="gap-5 text-gray-400 hover:text-gray-100 hover:m-gray-300" /></div>
                             <div className="flex shrink-0 items-center">
-                                <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" className="h-8 w-auto" />
+                                <DoLearnLogo />
                             </div>
                             <div className="hidden sm:ml-6 sm:block">
                                 <div className="flex space-x-4">

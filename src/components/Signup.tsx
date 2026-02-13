@@ -1,81 +1,144 @@
-import LoginImage from './common/LoginImage';
-import Title from './common/Title';
-import Input from './common/Input';
-import Label from './common/Label';
-import Password from './common/Password';
-import Button from './common/Button';
+
+import { IoCloseSharp } from "react-icons/io5";
+import LoginImage from './common/LoginImage.jsx';
+import Title from './common/Title.jsx';
+import Input from './common/Input.jsx';
+import Label from './common/Label.jsx';
+import Password from './common/Password.jsx';
+import Button from './common/Button.jsx';
 import axios from 'axios';
 import { useState, useEffect } from 'react'
+import { FaGoogle, FaFacebookF } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    const handleName = (e) => {
-        setName(e.target.value);
+    const navigate = useNavigate();
+    const handleClick = (url: string) => {
+        navigate(url);
     }
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+    });
 
-    const handleEmail = (e) => {
-        setEmail(e.target.value);
-    }
+    const handleChange = (e: any) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
-    const handlePassword = (e) => {
-        setPassword(e.target.value);
-    }
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
-        console.log(name, email, password);
         try {
-            const res = await axios.post("http://localhost:8081/auth/signup", {
-                name, email, password
+            if (formData.password !== formData.confirmPassword) {
+                alert("Passwords do not match");
+                return;
+            }
+            const { confirmPassword, ...dataToSend } = formData;
+            const res = await axios.post("http://localhost:3002/users", dataToSend);
+            setFormData({
+                name: "",
+                email: "",
+                password: "",
+                confirmPassword: "",
             });
-            console.log(res.data)
             alert("Data submitted");
         } catch (error) {
-            console.log(error.message);
+            throw new Error(error.message);
         }
     }
 
-
     return (
         <>
-            <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <LoginImage />
-                    <Title title="Sign up to your account" />
-                </div>
+            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 to-purple-600 px-4">
+                <div className="bg-white p-8 my-15 rounded-2xl shadow-2xl w-full max-w-md">
+                    <div onClick={() => handleClick("/")} className="float-right">
+                        <IoCloseSharp />
+                    </div>
+                    {/* Header */}
+                    <h2 className="text-3xl font-bold text-center text-gray-800">
+                        Create Account
+                    </h2>
+                    <p className="text-center text-gray-500 mb-6">
+                        Join us and start your journey 🚀
+                    </p>
 
-                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form action="#" method="POST" className="space-y-6" onSubmit={handleSubmit}>
-                        <div>
-                            <Label title="Name" />
-                            <Input value={name} onChange={handleName} placeholder={"Enter name"} />
-                        </div>
-                        <div>
-                            <Label title="Email address" />
-                            <Input value={email} onChange={handleEmail} placeholder={"Enter email"} />
-                        </div>
-                        <div>
-                            <div className="flex items-center justify-between">
-                                <Label title="Password" />
-                            </div>
-                            <div className="mt-2 border-2 rounded-lg">
-                                <Password value={password} onChange={handlePassword} placeholder={"Enter password"} />
-                            </div>
-                        </div>
+                    {/* Social Login */}
+                    <div className="space-y-3">
+                        <button className="w-full flex items-center justify-center gap-3 border rounded-lg py-2 hover:bg-gray-100 transition">
+                            <FaGoogle className="text-red-500" />
+                            <span className="font-medium">Continue with Google</span>
+                        </button>
 
-                        <div>
-                            <Button title="Sign up" handler={handleSubmit} />
-                        </div>
+                        <button className="w-full flex items-center justify-center gap-3 bg-blue-600 text-white rounded-lg py-2 hover:bg-blue-500 transition">
+                            <FaFacebookF />
+                            <span className="font-medium">Continue with Facebook</span>
+                        </button>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="flex items-center my-6">
+                        <div className="flex-grow h-px bg-gray-300"></div>
+                        <span className="px-3 text-gray-400 text-sm">OR</span>
+                        <div className="flex-grow h-px bg-gray-300"></div>
+                    </div>
+
+                    {/* Form */}
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Full Name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                        />
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email Address"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                        />
+
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                        />
+
+                        <input
+                            type="password"
+                            name="confirmPassword"
+                            placeholder="Confirm Password"
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
+                            required
+                            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                        />
+
+                        <button
+                            type="submit"
+                            className="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-500 transition shadow-md"
+                        >
+                            Create Account
+                        </button>
                     </form>
 
-                    <p className="mt-10 text-center text-sm/6 text-gray-400">
-                        Not a member?{' '}
-                        <a href="#" className="font-semibold text-indigo-400 hover:text-indigo-300">
-                            Start a 14 day free trial
-                        </a>
+                    {/* Footer */}
+                    <p className="text-sm text-center text-gray-600 mt-6">
+                        Already have an account?{" "}
+                        <span onClick={() => handleClick("/login")} className="text-indigo-600 hover:underline cursor-pointer">
+                            Login
+                        </span>
                     </p>
                 </div>
             </div>

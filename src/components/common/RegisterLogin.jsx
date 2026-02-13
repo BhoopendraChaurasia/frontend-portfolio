@@ -1,24 +1,28 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const RegisterLogin = () => {
-    return (
+    const navigate = useNavigate();
+    const handleClick = (url) => {
+        navigate(url);
+    }
+     return (
         <div className="flex items-center gap-4">
-            <Link
-                to="/register"
+            <button
+                onClick={() => handleClick("/register")}
                 className="px-6 py-2 rounded-lg text-white font-semibold
                bg-gradient-to-r from-purple-500 to-pink-500
                hover:scale-105 transition transform duration-300 shadow-lg"
             >
                 Register
-            </Link>
+            </button>
 
-            <Link
-                to="/login"
+            <button
+                onClick={() => handleClick("/login")}
                 className="px-6 py-2 rounded-lg text-white font-semibold
                bg-gradient-to-r from-blue-500 to-cyan-500
                hover:scale-105 transition transform duration-300 shadow-lg"
             >
                 Login
-            </Link>
+            </button>
         </div>
         // <div className="flex items-center gap-4">
         //     <Link

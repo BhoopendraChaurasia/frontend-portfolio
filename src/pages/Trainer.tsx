@@ -1,7 +1,24 @@
 import { Link } from 'react-router-dom';
 import TrainerProfileButton from '../components/common/TrainerProfilebutton';
+import { useState, useEffect } from 'react';
+import axios from 'axios';  
+
 
 function Trainer() {
+    // const [trainers, setTrainers] = useState(null);
+    // useEffect(() => {
+    //     const fetchTrainers = async () => {
+    //         try {
+    //             const res = await axios.get("https://jsonplaceholder.typicode.com/users");
+    //             console.log(res.data);
+    //             setTrainers(res.data);
+    //         } catch (e) {
+    //             console.error(e);
+    //         }
+    //     };
+    //     fetchTrainers();
+    // }, []);
+
     const trainers = [
         {
             name: "John Doe",
@@ -39,12 +56,12 @@ function Trainer() {
                     guiding students toward success.
                 </p>
             </div>
-
             {/* Trainers Grid */}
             <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {/* {trainers} */}
                 {trainers.map((trainer, index) => (
                     <div
-                        key={index}
+                        key={index} 
                         className="bg-gray-800 rounded-xl shadow-lg overflow-hidden
                        hover:scale-105 transition duration-300"
                     >

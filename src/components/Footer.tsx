@@ -5,8 +5,68 @@ import {
   FaGithub,
   FaYoutube,
 } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+import DoLearnlogo from '@/assets/icons/DoLearnLogo'
 
 const Footer = () => {
+
+  const links = [{
+    icons: [
+      {
+        icon: FaFacebookF,
+      },
+      {
+        icon: FaInstagram
+      },
+      {
+        icon: FaTwitter
+      },
+      {
+        icon: FaGithub
+      },
+      {
+        icon: FaYoutube
+      }
+    ],
+    solutions: [
+      { title: "Marketing" }, 
+      { title: "Analytics" }, 
+      { title: "Automation" }, 
+      { title: "Commerce" }
+    ],
+    support: [
+      { title: "Submit ticket"},
+      { title: "Documentation"},
+      { title: "Guides"}
+    ],
+    company: [
+      {
+        title: "About"
+      },
+      {
+        title: "Blog"
+      },
+      {
+        title: "Jobs"
+      },
+      {
+        title: "Press"
+      }
+    ],
+    legal: [
+      {
+        title: "Terms of service"
+      },
+      {
+        title: "Privacy policy"
+      },
+      {
+        title: "License"
+      }
+    ]
+  }];
+
+
   return (
     <footer className="bg-gradient-to-b from-[#0B1220] to-[#070B15] text-gray-400">
       <div className="max-w-7xl mx-auto px-6 py-16">
@@ -15,10 +75,9 @@ const Footer = () => {
         <div className="mb-16 text-center md:text-left">
           {/* Logo */}
           <div className="flex items-center justify-center md:justify-start mb-4">
-            <div className="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center text-2xl font-bold animate-pulse">
-              ∞
+            <div className="w-30 h-30 bg-indigo-500 flex items-center justify-center text-2xl font-bold animate-pulse">
+              <DoLearnlogo /> <span className="ml-3 text-white font-bold text-xl">doLearn</span>
             </div>
-            <span className="ml-3 text-white font-bold text-xl">STS</span>
           </div>
 
           {/* Description */}
@@ -28,39 +87,24 @@ const Footer = () => {
 
           {/* Social Icons */}
           <div className="flex justify-center md:justify-start space-x-4 text-gray-400 text-lg">
-            <a href="#" className="hover:text-indigo-500 transition transform hover:scale-125">
-              <FaFacebookF />
-            </a>
-            <a href="#" className="hover:text-pink-500 transition transform hover:scale-125">
-              <FaInstagram />
-            </a>
-            <a href="#" className="hover:text-blue-400 transition transform hover:scale-125">
-              <FaTwitter />
-            </a>
-            <a href="#" className="hover:text-gray-200 transition transform hover:scale-125">
-              <FaGithub />
-            </a>
-            <a href="#" className="hover:text-red-600 transition transform hover:scale-125">
-              <FaYoutube />
-            </a>
+            {links[0].icons.map(link => <Link to="" className="hover:text-indigo-500 transition transform hover:scale-125">
+              {<link.icon />}
+            </Link>)}
           </div>
         </div>
 
         {/* Links Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center md:text-left">
-
-          {/* Solutions */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Solutions</h3>
+          {links.map((link, i) => <div key={i}>
+            <h3 className="text-white font-semibold mb-4">{Object.keys(link)[i+1]}</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="hover:text-indigo-500 transition">Marketing</a></li>
+              <li><Link to="#" className="hover:text-indigo-500 transition"></Link></li>
               <li><a href="#" className="hover:text-indigo-500 transition">Analytics</a></li>
               <li><a href="#" className="hover:text-indigo-500 transition">Automation</a></li>
               <li><a href="#" className="hover:text-indigo-500 transition">Commerce</a></li>
             </ul>
-          </div>
-
-          {/* Support */}
+          </div>)}
+          
           <div>
             <h3 className="text-white font-semibold mb-4">Support</h3>
             <ul className="space-y-3">
@@ -70,7 +114,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Company */}
           <div>
             <h3 className="text-white font-semibold mb-4">Company</h3>
             <ul className="space-y-3">
@@ -81,7 +124,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Legal */}
           <div>
             <h3 className="text-white font-semibold mb-4">Legal</h3>
             <ul className="space-y-3">
@@ -92,7 +134,6 @@ const Footer = () => {
           </div>
 
         </div>
-
       </div>
 
       {/* Bottom */}

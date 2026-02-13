@@ -1,41 +1,25 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
-import Popover from "./components/common/Popover";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Profile from "./components/Profile";
-import Signin from "./components/Signin";
-import Signup from "./components/Signup";
-import { useState } from 'react';
+import { HashRouter, Routes, Route, Router } from "react-router-dom";
+// import Popover from "./components/common/Popover";
+// import Footer from "./components/Footer";
+// import Header from "./components/Header";
+// import Profile from "./components/Profile";
+// import { useState } from 'react';
+
 import Home from './pages/Home';
 import About from './pages/About';
 import Course from './pages/Course';
 import Trainer from './pages/Trainer';
 import TrainerSignup from './components/TrainerSignup';
 import TrainerProfile from './components/TrainerProfile';
-import Sidebar from './components/Sidebar';
+import MainLayout from './components/layouts/MainLayout.tsx';
+import AuthLayout from '@/components/layouts/AuthLayout.tsx';
+import AdminLayout from './components/layouts/AdminLayout.tsx';
+import HomePage from '@/admin/HomePage';
+import SignIn from '@/components/SignIn';
+import SignUp from './components/SignUp';
 
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [showPopover, setShowPopover] = useState(false);
-  const handleSidebar = () => {
-    console.log(sidebarOpen);
-    setSidebarOpen(!sidebarOpen);
-  }
-  const handleUserClick = () => {
-    setShowPopover(prev => !prev);
-  };
-
-  const [isLogin, setIsLogin] = useState(false);
-  if (localStorage.getItem("token") && !isLogin) {
-    console.log("Token found ", localStorage.getItem("token"));
-    setIsLogin(true);
-  }
-
-  const handleLogout = () => {
-    setShowPopover(prev => !prev);
-    return localStorage.clear();
-  }
-
+  
   const trainerData = {
     name: "John Doe",
     email: "john@example.com",
@@ -55,28 +39,32 @@ function App() {
     ],
   };
 
+
   return (
     <>
       <HashRouter>
-        <div className="flex h-screen">
-          {sidebarOpen && <Sidebar handleSidebar={handleSidebar} />}
-          <main className="flex-1 bg-gray-100">
-            <Header handleSidebar={handleSidebar} onUserClick={handleUserClick} isLogin={isLogin} />
-            {showPopover && <Popover onUserClick={handleUserClick} handleLogout={handleLogout} />}
-            {isLogin && <Profile />}
-            <Routes>
-              <Route index element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/course" element={<Course />} />
-              <Route path="/trainer" element={<Trainer />} />
-              <Route path="register" element={<Signup />} />
-              <Route path="login" element={<Signin />} />
-              <Route path="/trainer-signup" element={<TrainerSignup />} />
-              <Route path="/trainer-profile" element={<TrainerProfile trainer={trainerData} />} />
-            </Routes>
-            <Footer />
-          </main>
-        </div>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="course" element={<Course />} />
+            <Route path="trainer" element={<Trainer />}>
+              <Route path="trainer-profile" element={<TrainerProfile trainer={trainerData} />} />
+              <Route path="register" element={<TrainerSignup />} />
+            </Route>
+            <Route element={<AuthLayout />}>
+              <Route path="register" element={<SignUp />} />
+              <Route path="login" element={<SignIn />} />
+            </Route>
+          </Route>
+          {/* ============ admin layout start ============== */}
+          <Route path="admin" element={<AdminLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path="register" element={<SignUp />} />
+            <Route path="login" element={<SignIn />} />
+          </Route>
+          {/* ============ admin section ends ============== */}
+        </Routes>
       </HashRouter>
     </>
   );

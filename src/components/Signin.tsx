@@ -6,76 +6,123 @@ import Password from './common/Password';
 import Button from './common/Button';
 import { useState } from 'react';
 import axios from 'axios'
+import { FaGoogle, FaFacebookF } from "react-icons/fa";
+import { IoCloseSharp } from "react-icons/io5";
 
+import { useNavigate } from 'react-router-dom';
 export default function Signin() {
-
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-
-	const handleEmail = (e) => {
-		setEmail(e.target.value);
+	const navigate = useNavigate();
+	const handleClick = (url) => {
+		navigate(url);
 	}
-	const handlePassword = (e) => {
-		setPassword(e.target.value);
-	}
-	const handleLogin = async (e) => {
+
+	const [formData, setFormData] = useState({
+		email: "",
+		password: "",
+	});
+
+	const handleChange = async (e: any) => {
+		setFormData({ ...formData, [e.target.name]: e.target.value });
+	};
+
+	const handleSubmit = (e: any) => {
 		e.preventDefault();
-		console.log(email, password);
-		try {
-			const res = await axios.post("http://localhost:8081/auth/signin", {
-				email, password
-			});
-			if (res.data === "Invalid Credentials") {
-				alert(res.data.message);;
-			}
-			const { token } = res.data;
-			localStorage.setItem("token", token);
-			console.log("Login Successful");
 
-		} catch (error) {
-			console.log(error.message);
-		}
-	}
+		console.log("Signup Data:", formData);
+	};
+	// const handleLogin = async (e) => {
+	// 	e.preventDefault();
+	// 	console.log(email, password);
+	// 	try {
+	// 		const res = await axios.post("http://localhost:8081/auth/signin", {
+	// 			email, password
+	// 		});
+	// 		if (res.data === "Invalid Credentials") {
+	// 			alert(res.data.message);;
+	// 		}
+	// 		const { token } = res.data;
+	// 		localStorage.setItem("token", token);
+	// 		console.log("Login Successful");
+
+	// 	} catch (error) {
+	// 		console.log(error.message);
+	// 	}
+	// }
 
 	return (
 		<>
-			<div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
-					<LoginImage />
-					<Title title="Sign in to your account" />
-				</div>
+			<div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 to-purple-600 px-4">
+				<div className="bg-white p-8 my-15 rounded-2xl shadow-2xl w-full max-w-md">
+					<div onClick={() => handleClick("/")} className="float-right rounded">
+						<IoCloseSharp />
+					</div>
+					{/* Header */}
+					<h2 className="text-3xl font-bold text-center text-gray-800">
+						Sign In Account
+					</h2>
+					<p className="text-center text-gray-500 mb-6">
+						Join us and start your journey 🚀
+					</p>
 
-				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-					<form action="#" method="POST" className="space-y-6" onSubmit={handleLogin}>
-						<div>
-							<Label title="Email address" />
-							<Input value={email} onChange={handleEmail} placeholder={"Enter email"} />
-						</div>
+					{/* Social Login */}
+					<div className="space-y-3">
+						<button className="w-full flex items-center justify-center gap-3 border rounded-lg py-2 hover:bg-gray-100 transition">
+							<FaGoogle className="text-red-500" />
+							<span className="font-medium">Continue with Google</span>
+						</button>
 
-						<div>
-							<div className="flex items-center justify-between">
-								<Label title="Password" />
-								<div className="text-sm">
-									<a href="#" className="font-semibold text-indigo-400 hover:text-indigo-300">
-										Forgot password?
-									</a>
-								</div>
-							</div>
-							<div className="mt-2 border-2 rounded-lg">
-								<Password value={password} onChange={handlePassword} placeholder={"Enter password"} />
-							</div>
-						</div>
+						<button className="w-full flex items-center justify-center gap-3 bg-blue-600 text-white rounded-lg py-2 hover:bg-blue-500 transition">
+							<FaFacebookF />
+							<span className="font-medium">Continue with Facebook</span>
+						</button>
+					</div>
 
-						<div>
-							<Button title="Sign in" />
-						</div>
+					{/* Divider */}
+					<div className="flex items-center my-6">
+						<div className="flex-grow h-px bg-gray-300"></div>
+						<span className="px-3 text-gray-400 text-sm">OR</span>
+						<div className="flex-grow h-px bg-gray-300"></div>
+					</div>
+
+					{/* Form */}
+					<form onSubmit={handleSubmit} className="space-y-4">
+
+
+						<input
+							type="email"
+							name="email"
+							placeholder="Email Address"
+							value={formData.email}
+							onChange={handleChange}
+							required
+							className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+						/>
+
+						<input
+							type="password"
+							name="password"
+							placeholder="Password"
+							value={formData.password}
+							onChange={handleChange}
+							required
+							className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+						/>
+
+						<button
+							type="submit"
+							className="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-500 transition shadow-md"
+						>
+							Sign In
+						</button>
 					</form>
 
-					<p className="mt-10 text-center text-sm/6 text-gray-400">
-						Not a member?{' '}
-						<a href="#" className="font-semibold text-indigo-400 hover:text-indigo-300">
-							Start a 14 day free trial
-						</a>
+					{/* Footer */}
+					<p className="text-sm text-center text-gray-600 mt-6">
+						Doesn't have an account?{" "}
+						<span onClick={() => handleClick("/register")} className="text-indigo-600 hover:underline cursor-pointer">
+							Register
+						</span>
+
 					</p>
 				</div>
 			</div>

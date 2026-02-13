@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": "182c",
+      "formData": {
+        "name": "Bhoopendra chaurasia",
+        "email": "bchaurasia97@gmail.com",
+        "password": "123456",
+        "confirmPassword": "123456"
+      }
+    },
+    {
+      "id": "bca7",
+      "formData": {
+        "name": "fsgs",
+        "email": "csfsd@gmail.com",
+        "password": "123456",
+        "confirmPassword": "123456"
+      }
+    },
+    {
+      "id": "5053",
+      "name": "gdfgdfg",
+      "email": "vsgd@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "dc5c",
+      "name": "deva",
+      "email": "deva@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "b1c7",
+      "name": "fbdvdf`",
+      "email": "vsvs@gmail.com",
+      "password": "1234"
+    }
+  ]
+}
