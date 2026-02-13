@@ -35,6 +35,30 @@
       "name": "fbdvdf`",
       "email": "vsvs@gmail.com",
       "password": "1234"
+    },
+    {
+      "id": "e85d",
+      "name": "kkk",
+      "email": "lkkk@gmail.com",
+      "password": "123"
+    }
+  ],
+  "trainer": [
+    {
+      "id": "430c",
+      "name": "Ravi",
+      "email": "ravi@gmail.com",
+      "password": "12345",
+      "expertise": "Java",
+      "experience": 3
+    },
+    {
+      "id": "69bf",
+      "name": "Bhoopendra Chaurasia",
+      "email": "bhoopendra727221@gmail.com",
+      "password": "12345",
+      "expertise": "backend",
+      "experience": 4
     }
   ]
 }

@@ -87,7 +87,7 @@ const Footer = () => {
 
           {/* Social Icons */}
           <div className="flex justify-center md:justify-start space-x-4 text-gray-400 text-lg">
-            {links[0].icons.map(link => <Link to="" className="hover:text-indigo-500 transition transform hover:scale-125">
+            {links[0].icons.map((link, i) => <Link key={i} to="" className="hover:text-indigo-500 transition transform hover:scale-125">
               {<link.icon />}
             </Link>)}
           </div>

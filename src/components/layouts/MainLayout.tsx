@@ -18,6 +18,7 @@ export default function MainLayout() {
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [showPopover, setShowPopover] = useState(false);
+
     const handleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
     }
@@ -68,7 +69,7 @@ export default function MainLayout() {
                     <Route path="/trainer" element={<Trainer />} />
                     <Route path="/register" element={<SignUp />} />
                     <Route path="/login" element={<SignIn />} />
-                    <Route path="/trainer-signup" element={<TrainerSignup />} />
+                    <Route path="/add" element={<TrainerSignup />} />
                     <Route path="/trainer-profile" element={<TrainerProfile trainer={trainerData} />} />
                 </Routes>
                 <Footer />

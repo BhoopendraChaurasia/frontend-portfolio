@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import TrainerProfileButton from '../components/common/TrainerProfilebutton';
 import { useState, useEffect } from 'react';
 import axios from 'axios';  
@@ -18,6 +18,11 @@ function Trainer() {
     //     };
     //     fetchTrainers();
     // }, []);
+
+    const navigate = useNavigate();
+    const handleNavigate = (url: string) => {
+        navigate(url);
+    }
 
     const trainers = [
         {
@@ -113,9 +118,9 @@ function Trainer() {
                 <p className="text-gray-300 mb-6">
                     Our trainers are committed to empowering students with industry-ready skills.
                 </p>
-                <Link to="/trainer-signup" className="px-8 py-3 bg-blue-600 rounded-full hover:bg-blue-700 transition">
+                <button onClick={() => handleNavigate("/add")} className="px-8 py-3 bg-blue-600 rounded-full hover:bg-blue-700 transition">
                     Join as a Trainer
-                </Link>
+                </button>
             </div>
         </div >
     );

@@ -17,6 +17,7 @@ import AdminLayout from './components/layouts/AdminLayout.tsx';
 import HomePage from '@/admin/HomePage';
 import SignIn from '@/components/SignIn';
 import SignUp from './components/SignUp';
+import TrainerSignUp from './components/TrainerSignup';
 
 function App() {
   
@@ -49,9 +50,10 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="course" element={<Course />} />
             <Route path="trainer" element={<Trainer />}>
-              <Route path="trainer-profile" element={<TrainerProfile trainer={trainerData} />} />
+              <Route path="trainer-profile" element={<TrainerProfile trainer={trainerData} />}/>
               <Route path="register" element={<TrainerSignup />} />
             </Route>
+            <Route path="add" element={<TrainerSignUp />} />
             <Route element={<AuthLayout />}>
               <Route path="register" element={<SignUp />} />
               <Route path="login" element={<SignIn />} />
@@ -63,6 +65,7 @@ function App() {
             <Route path="register" element={<SignUp />} />
             <Route path="login" element={<SignIn />} />
           </Route>
+          <Route path="/*" />
           {/* ============ admin section ends ============== */}
         </Routes>
       </HashRouter>
