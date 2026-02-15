@@ -86,5 +86,49 @@
       "email": "alex@example.com",
       "gradient": "from-dark-500 to-emerald-500"
     }
+  ],
+  "trainers": [
+    {
+      "id": "430c",
+      "name": "Ravi",
+      "email": "ravi@gmail.com",
+      "password": "12345",
+      "expertise": "Java",
+      "experience": 3,
+            "gradient": "from-megenta-500 to-cyan-500"
+    },
+    {
+      "id": "69bf",
+      "name": "Bhoopendra Chaurasia",
+      "email": "bhoopendra727221@gmail.com",
+      "password": "12345",
+      "expertise": "backend",
+      "experience": 4,
+            "gradient": "from-red-500 to-cyan-500"
+    },
+    {
+      "id": "69bd",
+      "name": "John Doe",
+      "expertise": "Full Stack Development",
+      "experience": "8+ Years",
+      "email": "john@example.com",
+      "gradient": "from-gray-500 to-cyan-500"
+    },
+    {
+      "id": "69sr",
+      "name": "Jane Smith",
+      "expertise": "Data Science & AI",
+      "experience": "6+ Years",
+      "email": "jane@example.com",
+      "gradient": "from-yellow-500 to-pink-500"
+    },
+    {
+      "id": "69bs",
+      "name": "Alex Brown",
+      "expertise": "UI / UX Design",
+      "experience": "5+ Years",
+      "email": "alex@example.com",
+      "gradient": "from-dark-500 to-emerald-500"
+    }
   ]
 }
