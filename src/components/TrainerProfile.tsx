@@ -1,4 +1,3 @@
-import React from "react";
 import { FaEnvelope, FaPhone, FaLinkedin, FaTwitter, FaStar } from "react-icons/fa";
 
 const TrainerProfile = ({ trainer }) => {

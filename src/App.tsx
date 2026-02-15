@@ -19,8 +19,9 @@ import SignIn from '@/components/SignIn';
 import SignUp from './components/SignUp';
 import TrainerSignUp from './components/TrainerSignup';
 
+
 function App() {
-  
+
   const trainerData = {
     name: "John Doe",
     email: "john@example.com",
@@ -45,19 +46,21 @@ function App() {
     <>
       <HashRouter>
         <Routes>
-          <Route element={<MainLayout />}>
-            <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="course" element={<Course />} />
-            <Route path="trainer" element={<Trainer />}>
+          <Route path="*" element={<MainLayout />} >
+
+
+            {/* <Route index element={<Home />}  */}
+            {/* <Route path="about" element={<About />} /> */}
+            {/* <Route path="course" element={<Course />} /> */}
+            {/* <Route path="trainer" element={<Trainer />}>
               <Route path="trainer-profile" element={<TrainerProfile trainer={trainerData} />}/>
               <Route path="register" element={<TrainerSignup />} />
-            </Route>
-            <Route path="add" element={<TrainerSignUp />} />
+            </Route> */}
+            {/* <Route path="add" element={<TrainerSignUp />} />
             <Route element={<AuthLayout />}>
               <Route path="register" element={<SignUp />} />
               <Route path="login" element={<SignIn />} />
-            </Route>
+            </Route> */}
           </Route>
           {/* ============ admin layout start ============== */}
           <Route path="admin" element={<AdminLayout />}>
@@ -65,10 +68,9 @@ function App() {
             <Route path="register" element={<SignUp />} />
             <Route path="login" element={<SignIn />} />
           </Route>
-          <Route path="/*" />
           {/* ============ admin section ends ============== */}
         </Routes>
-      </HashRouter>
+      </HashRouter >
     </>
   );
 }

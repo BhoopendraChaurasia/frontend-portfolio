@@ -1,16 +1,17 @@
-import { Link, useNavigate } from 'react-router-dom';
-import TrainerProfileButton from '../components/common/TrainerProfilebutton';
+import { useNavigate } from 'react-router-dom';
+import TrainerCards from '../components/common/TrainerCards';
+import { TrainerButton } from '../components/common/TrainerButton';
 import { useState, useEffect } from 'react';
-import axios from 'axios';  
+import axios from 'axios';
 
 
-function Trainer() {
+function Trainer({ data }: any) {
+
     const [trainers, setTrainers] = useState([]);
     useEffect(() => {
         const fetchTrainers = async () => {
             try {
-                const res = await axios.get("http://localhost:3002/trainers");
-                console.log(res.data);
+                const res = await axios.get("http://localhost:3000/trainers");
                 setTrainers(res.data);
             } catch (e) {
                 console.error(e);
@@ -22,31 +23,11 @@ function Trainer() {
     const navigate = useNavigate();
     const handleNavigate = (url: string) => {
         navigate(url);
-    }
-
-    // const trainers = [
-        // {
-        //     name: "John Doe",
-        //     expertise: "Full Stack Development",
-        //     experience: "8+ Years",
-        //     email: "john@example.com",
-        //     gradient: "from-blue-500 to-cyan-500",
-        // },
-        // {
-        //     name: "Jane Smith",
-        //     expertise: "Data Science & AI",
-        //     experience: "6+ Years",
-        //     email: "jane@example.com",
-        //     gradient: "from-purple-500 to-pink-500",
-        // },
-        // {
-        //     name: "Alex Brown",
-        //     expertise: "UI / UX Design",
-        //     experience: "5+ Years",
-        //     email: "alex@example.com",
-        //     gradient: "from-green-500 to-emerald-500",
-        // },
-    // ];
+    };
+    
+    const filteredTrainers = trainers.filter(
+        (trainer) => trainer.name.toLowerCase().includes(data.toLowerCase())
+    );
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white px-6 py-16">
@@ -63,51 +44,14 @@ function Trainer() {
             </div>
             {/* Trainers Grid */}
             <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {/* {trainers} */}
-                {trainers.map((trainer, index) => (
-                    <div
-                        key={index} 
-                        className="bg-gray-800 rounded-xl shadow-lg overflow-hidden
-                       hover:scale-105 transition duration-300"
-                    >
-                        {/* Avatar Section */}
-                        <div
-                            className={`h-32 bg-gradient-to-r ${trainer.gradient}
-                          flex items-center justify-center`}
-                        >
-                            <div className="w-20 h-20 rounded-full bg-white text-gray-900
-                              flex items-center justify-center text-2xl font-bold">
-                                {trainer.name.charAt(0)}
-                            </div>
-                        </div>
-
-                        {/* Trainer Info */}
-                        <div className="p-6 text-center">
-                            <h3 className="text-xl font-bold mb-1">{trainer.name}</h3>
-                            <p className="text-blue-400 mb-2">{trainer.expertise}</p>
-
-                            <p className="text-gray-300 mb-1">
-                                <span className="font-semibold">Experience:</span>{" "}
-                                {trainer.experience}
-                            </p>
-                            <p className="text-gray-300 mb-4">
-                                <span className="font-semibold">Email:</span>{" "}
-                                {trainer.email}
-                            </p>
-
-                            <TrainerProfileButton trainer={trainer} />
-
-                            {/* <button
-                                to={"/trainer-profile"}
-                                className={`w-full py-2 rounded-lg font-semibold
-                            bg-gradient-to-r ${trainer.gradient}
-                            hover:opacity-90 transition`}
-                            >
-                                View Profile
-                            </button> */}
-                        </div>
-                    </div>
-                ))}
+                {   filteredTrainers.length === 0 
+                    ? <h1 className="text-2xl md:text-2xl text-center font-extrabold mb-4">
+                        Our Trainers
+                    </h1> :
+                    filteredTrainers.map(
+                        (trainer, index) => <TrainerCards key={index} trainer={trainer} />
+                    )
+                }
             </div>
 
             {/* Call to Action */}
@@ -118,9 +62,7 @@ function Trainer() {
                 <p className="text-gray-300 mb-6">
                     Our trainers are committed to empowering students with industry-ready skills.
                 </p>
-                <button onClick={() => handleNavigate("/add")} className="px-8 py-3 bg-blue-600 rounded-full hover:bg-blue-700 transition">
-                    Join as a Trainer
-                </button>
+                <TrainerButton handleNavigate={handleNavigate} />
             </div>
         </div >
     );

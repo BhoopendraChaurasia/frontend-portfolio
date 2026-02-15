@@ -1,5 +1,5 @@
 import Home from '@/pages/Home'
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Popover from "@/components/common/Popover";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -14,11 +14,12 @@ import TrainerSignup from '@/components/TrainerSignup';
 import TrainerProfile from '@/components/TrainerProfile';
 import Sidebar from '@/components/Sidebar';
 
+
 export default function MainLayout() {
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [showPopover, setShowPopover] = useState(false);
-
+    const [data, setData] = useState('');
     const handleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
     }
@@ -55,23 +56,40 @@ export default function MainLayout() {
             { title: "Full Stack Bootcamp", description: "Complete full stack course", rating: 5 },
         ],
     };
+
     return (
         <>
             <main className="flex-1 bg-gray-100">
-                {sidebarOpen && <Sidebar handleSidebar={handleSidebar} />}
-                <Header handleSidebar={handleSidebar} onUserClick={handleUserClick} isLogin={isLogin} />
-                {showPopover && <Popover onUserClick={handleUserClick} handleLogout={handleLogout} />}
+                {sidebarOpen && <Sidebar handleSidebar={handleSidebar} onUserClick={handleUserClick} isLogin={isLogin} />}
+
+                <Header
+                    handleSidebar={handleSidebar}
+                    onUserClick={handleUserClick}
+                    isLogin={isLogin}
+                    setData={setData}
+                />
+
+                {/* popup bar for login user */}
+                {showPopover &&
+                    <Popover
+                        onUserClick={handleUserClick}
+                        handleLogout={handleLogout}
+                    />}
+                {/* Loader for user profile  */}
                 {isLogin && <Profile />}
+
                 <Routes>
-                    <Route index element={<Home />} />
-                    <Route path="about" element={<About />} />
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
                     <Route path="/course" element={<Course />} />
-                    <Route path="/trainer" element={<Trainer />} />
+                    <Route path="/trainer" element={<Trainer data={data} />} >
+                        <Route path=":id" element={<TrainerProfile />} />
+                    </Route>
                     <Route path="/register" element={<SignUp />} />
                     <Route path="/login" element={<SignIn />} />
                     <Route path="/add" element={<TrainerSignup />} />
-                    <Route path="/trainer-profile" element={<TrainerProfile trainer={trainerData} />} />
                 </Routes>
+
                 <Footer />
             </main>
         </>
