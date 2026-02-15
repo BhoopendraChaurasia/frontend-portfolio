@@ -5,48 +5,48 @@ import axios from 'axios';
 
 
 function Trainer() {
-    // const [trainers, setTrainers] = useState(null);
-    // useEffect(() => {
-    //     const fetchTrainers = async () => {
-    //         try {
-    //             const res = await axios.get("https://jsonplaceholder.typicode.com/users");
-    //             console.log(res.data);
-    //             setTrainers(res.data);
-    //         } catch (e) {
-    //             console.error(e);
-    //         }
-    //     };
-    //     fetchTrainers();
-    // }, []);
+    const [trainers, setTrainers] = useState([]);
+    useEffect(() => {
+        const fetchTrainers = async () => {
+            try {
+                const res = await axios.get("http://localhost:3002/trainers");
+                console.log(res.data);
+                setTrainers(res.data);
+            } catch (e) {
+                console.error(e);
+            }
+        };
+        fetchTrainers();
+    }, []);
 
     const navigate = useNavigate();
     const handleNavigate = (url: string) => {
         navigate(url);
     }
 
-    const trainers = [
-        {
-            name: "John Doe",
-            expertise: "Full Stack Development",
-            experience: "8+ Years",
-            email: "john@example.com",
-            gradient: "from-blue-500 to-cyan-500",
-        },
-        {
-            name: "Jane Smith",
-            expertise: "Data Science & AI",
-            experience: "6+ Years",
-            email: "jane@example.com",
-            gradient: "from-purple-500 to-pink-500",
-        },
-        {
-            name: "Alex Brown",
-            expertise: "UI / UX Design",
-            experience: "5+ Years",
-            email: "alex@example.com",
-            gradient: "from-green-500 to-emerald-500",
-        },
-    ];
+    // const trainers = [
+        // {
+        //     name: "John Doe",
+        //     expertise: "Full Stack Development",
+        //     experience: "8+ Years",
+        //     email: "john@example.com",
+        //     gradient: "from-blue-500 to-cyan-500",
+        // },
+        // {
+        //     name: "Jane Smith",
+        //     expertise: "Data Science & AI",
+        //     experience: "6+ Years",
+        //     email: "jane@example.com",
+        //     gradient: "from-purple-500 to-pink-500",
+        // },
+        // {
+        //     name: "Alex Brown",
+        //     expertise: "UI / UX Design",
+        //     experience: "5+ Years",
+        //     email: "alex@example.com",
+        //     gradient: "from-green-500 to-emerald-500",
+        // },
+    // ];
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white px-6 py-16">
