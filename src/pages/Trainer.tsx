@@ -44,10 +44,13 @@ function Trainer({ data }: any) {
             </div>
             {/* Trainers Grid */}
             <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {   filteredTrainers.length === 0 
-                    ? <h1 className="text-2xl md:text-2xl text-center font-extrabold mb-4">
+                {
+                    filteredTrainers.length === 0 
+                    ? 
+                    <h1 className="text-2xl md:text-2xl text-center font-extrabold mb-4 items-center">
                         Our Trainers
-                    </h1> :
+                    </h1> 
+                    :
                     filteredTrainers.map(
                         (trainer, index) => <TrainerCards key={index} trainer={trainer} />
                     )
