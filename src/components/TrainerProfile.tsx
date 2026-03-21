@@ -53,6 +53,20 @@ const TrainerProfile = ({ trainer }) => {
                     <p className="mt-6 text-gray-300 text-sm md:text-base">{trainer.bio}</p>
                 )}
 
+
+
+<div style={ styles.container }>
+    <h2 style={ styles.heading }> User Profile </h2>
+
+        < div style = { styles.card } >
+            <p><strong>Name: </strong> {user.name}</p >
+                <p><strong>Email: </strong> {user.email}</p >
+                    <p><strong>Date of Birth: </strong> {user.dateOfBirth}</p >
+                        <p><strong>Address: </strong> {user.address}</p >
+                            <p><strong>User ID: </strong> {user.id}</p >
+                                </div>
+                                </div>
+
                 {/* Courses Section */}
                 {trainer.courses?.length > 0 && (
                     <div className="mt-8">

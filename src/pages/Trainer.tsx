@@ -10,8 +10,8 @@ function Trainer({ data }: any) {
     const [trainers, setTrainers] = useState([]);
     useEffect(() => {
         const fetchTrainers = async () => {
-            try {
-                const res = await axios.get("http://localhost:3000/trainers");
+            try { // http://localhost:3000/trainers
+                const res = await axios.get("http://localhost:4000/patients");
                 setTrainers(res.data);
             } catch (e) {
                 console.error(e);
