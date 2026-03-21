@@ -26,8 +26,7 @@ export default function TrainerSignup() {
         e.preventDefault();
 
         try {
-            console.log(formData)
-            await axios.post("http://localhost:3002/trainer", {
+            await axios.post("http://localhost:3000/trainers", {
                 ...formData,
                 experience: Number(formData.experience)
             });
@@ -46,8 +45,6 @@ export default function TrainerSignup() {
             alert("Something went wrong!");
         }
     };
-
-
 
     return (
         <div className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-gray-900 via-gray-800 to-black px-6 py-12">

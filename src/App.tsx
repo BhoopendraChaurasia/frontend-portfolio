@@ -14,7 +14,7 @@ import TrainerProfile from './components/TrainerProfile';
 import MainLayout from './components/layouts/MainLayout.tsx';
 import AuthLayout from '@/components/layouts/AuthLayout.tsx';
 import AdminLayout from './components/layouts/AdminLayout.tsx';
-import HomePage from '@/admin/HomePage';
+import HomePage from './admin/HomePage';
 import SignIn from '@/components/SignIn';
 import SignUp from './components/SignUp';
 import TrainerSignUp from './components/TrainerSignup';
@@ -47,8 +47,6 @@ function App() {
       <HashRouter>
         <Routes>
           <Route path="*" element={<MainLayout />} >
-
-
             {/* <Route index element={<Home />}  */}
             {/* <Route path="about" element={<About />} /> */}
             {/* <Route path="course" element={<Course />} /> */}
@@ -62,6 +60,7 @@ function App() {
               <Route path="login" element={<SignIn />} />
             </Route> */}
           </Route>
+          
           {/* ============ admin layout start ============== */}
           <Route path="admin" element={<AdminLayout />}>
             <Route index element={<HomePage />} />

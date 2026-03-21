@@ -6,7 +6,7 @@ export default function DoLearnLogo({ size = 28 }) {
             fontFamily: "Dancing Script",
             margin: 0
         }}>
-            <span style={{ color: "#4285F4" }}>do</span>
+            <span style={{ color: "#4285F4" }}>Keep</span>
             <span style={{ color: "#EA4335" }}>L</span>
             <span style={{ color: "#FBBC05" }}>e</span>
             <span style={{ color: "#34A853" }}>a</span>

@@ -13,6 +13,7 @@ import Trainer from '@/pages/Trainer';
 import TrainerSignup from '@/components/TrainerSignup';
 import TrainerProfile from '@/components/TrainerProfile';
 import Sidebar from '@/components/Sidebar';
+import NotFound from '@/pages/NotFound'
 
 
 export default function MainLayout() {
@@ -88,6 +89,7 @@ export default function MainLayout() {
                     <Route path="/register" element={<SignUp />} />
                     <Route path="/login" element={<SignIn />} />
                     <Route path="/add" element={<TrainerSignup />} />
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
 
                 <Footer />

@@ -1,7 +1,10 @@
+import { DashboardCard } from "../components/common/DashboardCard";
+
+
 export default function HomePage() {
     return (
         <>
-            <h1>Home page</h1>
+            <DashboardCard />
         </>
     )
 };
