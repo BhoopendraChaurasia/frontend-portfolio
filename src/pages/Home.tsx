@@ -10,7 +10,7 @@ const Home = () => {
             <section className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 relative">
                 <div className="max-w-7xl mx-auto px-6 py-32 text-center md:text-left">
                     <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
-                        Empower Employees. Support Trainers. Achieve Success.
+        Empower students. Support Trainers. Achieve Success.
                     </h1>
                     <p className="text-gray-200 mb-8 max-w-2xl">
                         A modern platform connecting students and trainers, tracking progress, and enhancing learning outcomes.
